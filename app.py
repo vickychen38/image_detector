@@ -5,6 +5,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import io
 from model_def import MiniVGG
+import os 
 
 app = Flask(__name__)
 
