@@ -11,7 +11,6 @@ app = Flask(__name__)
 # 加载模型
 model = MiniVGG(num_classes=2)
 model.load_state_dict(torch.load("model/mini_vgg_model.pth", map_location='cpu'))
-model.to(device)
 model.eval()
 
 # 图片预处理
