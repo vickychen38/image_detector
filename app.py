@@ -9,9 +9,8 @@ from model_def import MiniVGG
 app = Flask(__name__)
 
 # 加载模型
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = MiniVGG(num_classes=2)
-model.load_state_dict(torch.load("model/mini_vgg_model.pth", map_location=device))
+model.load_state_dict(torch.load("model/mini_vgg_model.pth", map_location='cpu'))
 model.to(device)
 model.eval()
 
@@ -39,5 +38,6 @@ def predict():
 
     return jsonify({"prediction": prediction})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
