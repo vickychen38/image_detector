@@ -5,9 +5,10 @@ import torchvision.transforms as transforms
 from PIL import Image
 import io
 from model_def import MiniVGG
-import os 
+import os
 
 app = Flask(__name__)
+device = torch.device("cpu")  # Render 默认只有 CPU，没有 GPU
 
 # 加载模型
 model = MiniVGG(num_classes=2)
